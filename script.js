@@ -1,3 +1,15 @@
+// Exibir mensagem de sucesso após redirecionamento do Formspree
+if (new URLSearchParams(window.location.search).get('enviado') === '1') {
+  window.scrollTo({ top: document.getElementById('contato').offsetTop - 80, behavior: 'smooth' });
+  setTimeout(() => {
+    const msg = document.createElement('div');
+    msg.style.cssText = 'position:fixed;top:90px;left:50%;transform:translateX(-50%);background:#03111F;color:#fff;padding:16px 28px;border-radius:10px;font-size:1rem;font-weight:600;z-index:999;box-shadow:0 4px 20px rgba(0,0,0,0.3)';
+    msg.textContent = '✓ Mensagem enviada! Entraremos em contato em breve.';
+    document.body.appendChild(msg);
+    setTimeout(() => msg.remove(), 6000);
+  }, 500);
+}
+
 function toggleMenu() {
   document.querySelector('nav').classList.toggle('open');
 }
