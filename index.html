@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qualiorg Consultoria</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="logo-link"><img src="logo-dark.png" alt="Qualiorg Consultoria" class="logo-img" /></a>
+      <nav>
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#como">Como trabalhamos</a>
+        <a href="#contato" class="btn-nav">Fale conosco</a>
+      </nav>
+      <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">&#9776;</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-content">
+      <h1>Transformamos <span>processos</span> em excelência</h1>
+      <p class="subtitle">Há 20 anos ajudamos empresas a implementar normas de qualidade, padronizar processos e conquistar certificações reconhecidas internacionalmente.</p>
+      <div class="hero-actions">
+        <a href="#contato" class="btn-primary">Quero uma consultoria</a>
+        <a href="#servicos" class="btn-secondary">Ver serviços</a>
+      </div>
+    </div>
+    <div class="hero-bg"></div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre" class="section sobre">
+    <div class="container sobre-grid">
+      <div class="sobre-text">
+        <p class="eyebrow">Quem somos</p>
+        <h2>Mais de 10 anos construindo excelência operacional</h2>
+        <p>Em 2013, o Gestor da Qualidade <strong>Fernando Pimenta</strong> fundou a empresa FAP, prestando serviços em sistemas de gestão da qualidade, padronização de processos, auditorias e treinamentos.</p>
+        <p>Em 2021, expandimos e nos tornamos a <strong>Qualiorg Consultoria</strong>. Em duas décadas de trajetória, nosso compromisso com a excelência operacional impulsionou o sucesso de dezenas de organizações.</p>
+
+        <div class="mvv-grid">
+          <div class="mvv-item">
+            <strong>Missão</strong>
+            <p>Ajudar empresas a alcançar a excelência pela implementação eficaz de normas de qualidade, simplificando processos e melhorando a eficiência.</p>
+          </div>
+          <div class="mvv-item">
+            <strong>Visão</strong>
+            <p>Ser a escolha para empresas que buscam soluções práticas em normas de qualidade, promovendo uma gestão mais simples e eficiente.</p>
+          </div>
+          <div class="mvv-item">
+            <strong>Valores</strong>
+            <p>Eficiência · Clareza · Simplicidade · Colaboração · Compromisso</p>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat">
+            <strong>+10</strong>
+            <span>Anos de experiência</span>
+          </div>
+          <div class="stat">
+            <strong>100%</strong>
+            <span>Atendimento personalizado</span>
+          </div>
+          <div class="stat">
+            <strong>ISO</strong>
+            <span>Certificações internacionais</span>
+          </div>
+        </div>
+      </div>
+      <div class="sobre-visual">
+        <div class="visual-card">
+          <div class="icon-large">&#9881;</div>
+          <blockquote>"Excelência operacional como cultura, não como evento."</blockquote>
+          <p class="founder">Fernando Pimenta<br><span>Fundador &amp; Gestor da Qualidade</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos" class="section servicos">
+    <div class="container">
+      <p class="eyebrow center">O que fazemos</p>
+      <h2 class="center">Nossos serviços</h2>
+      <p class="section-sub center">Soluções completas em qualidade, do diagnóstico à certificação.</p>
+      <div class="cards-grid">
+
+        <div class="card">
+          <div class="card-icon">&#127942;</div>
+          <h3>Implantação de Normas ISO / IEC</h3>
+          <p>Implementação e padronização de normas de qualidade ISO e IEC, com leitura, interpretação e aplicação prática em toda a organização.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">&#128269;</div>
+          <h3>Qualificação de Auditores Internos</h3>
+          <p>Formação e requalificação de auditores internos para garantir que sua equipe conduza auditorias com segurança e precisão.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">&#127968;</div>
+          <h3>S5 Housekeeping</h3>
+          <p>Implantação do conceito S5 para organização do ambiente de trabalho, aumentando a produtividade e a segurança operacional.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">&#128200;</div>
+          <h3>Gestão de Riscos e Oportunidades</h3>
+          <p>Treinamento para identificar, avaliar e tratar riscos e oportunidades, fortalecendo a tomada de decisão estratégica.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">&#128295;</div>
+          <h3>Ferramentas da Qualidade</h3>
+          <p>Aplicação de ferramentas como PDCA, Ishikawa, 5 Porquês, FMEA e outras metodologias para solução de problemas e melhoria contínua.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">&#128104;&#8205;&#127979;</div>
+          <h3>Treinamentos (Aberto ou In Company)</h3>
+          <p>Capacitação de colaboradores e lideranças nas principais normas e práticas de qualidade, presencialmente ou na sua empresa.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO TRABALHAMOS -->
+  <section id="como" class="section como">
+    <div class="container">
+      <p class="eyebrow center">Metodologia</p>
+      <h2 class="center">Como te ajudamos</h2>
+      <p class="section-sub center">Um processo estruturado do primeiro contato até a certificação.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>Visita Presencial</h3>
+          <p>Começamos com uma reunião para entender seu negócio e alinhar todas as expectativas.</p>
+        </div>
+        <div class="step-arrow">&#8594;</div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>Análise de Necessidades</h3>
+          <p>Com base nas informações coletadas, identificamos todas as melhorias necessárias na empresa.</p>
+        </div>
+        <div class="step-arrow">&#8594;</div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>Treinamento e Reestruturação</h3>
+          <p>Orientamos colaboradores e responsáveis nas principais aplicações de mudança dentro das normas.</p>
+        </div>
+        <div class="step-arrow">&#8594;</div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <h3>Avaliação</h3>
+          <p>Com as mudanças aplicadas, avaliamos os resultados obtidos e ajustamos o que for necessário.</p>
+        </div>
+        <div class="step-arrow">&#8594;</div>
+        <div class="step">
+          <div class="step-num">05</div>
+          <h3>Certificação</h3>
+          <p>Sua empresa dentro dos padrões de qualidade reconhecidos internacionalmente.</p>
+        </div>
+      </div>
+
+      <div class="beneficios">
+        <p class="eyebrow center">Benefícios da certificação</p>
+        <div class="beneficios-grid">
+          <div class="beneficio">
+            <span>&#10003;</span>
+            <p><strong>Qualidade</strong> — Reconhecida nos produtos e serviços, destacando sua empresa no mercado.</p>
+          </div>
+          <div class="beneficio">
+            <span>&#10003;</span>
+            <p><strong>Credibilidade</strong> — Sinal de confiança para clientes, fornecedores e parceiros.</p>
+          </div>
+          <div class="beneficio">
+            <span>&#10003;</span>
+            <p><strong>Eficiência</strong> — Processos otimizados que reduzem custos e desperdícios.</p>
+          </div>
+          <div class="beneficio">
+            <span>&#10003;</span>
+            <p><strong>Competitividade</strong> — Acesso a novos mercados e oportunidades de negócio.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="section contato">
+    <div class="container contato-grid">
+      <div class="contato-text">
+        <p class="eyebrow">Fale conosco</p>
+        <h2>Vamos trabalhar juntos?</h2>
+        <p>Entre em contato e descubra como a Qualiorg pode transformar a gestão da sua empresa.</p>
+        <div class="contato-info">
+          <p>&#128231; fernando@qualiorg.com.br</p>
+          <p>&#128222; (11) 99862-3467</p>
+          <p>&#128100; Fernando Pimenta — Gestor da Qualidade</p>
+        </div>
+      </div>
+      <form class="contato-form" onsubmit="enviarFormulario(event)">
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" placeholder="Seu nome completo" required />
+        </div>
+        <div class="form-group">
+          <label for="empresa">Empresa</label>
+          <input type="text" id="empresa" placeholder="Nome da sua empresa" />
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" placeholder="seu@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="telefone">Telefone</label>
+          <input type="tel" id="telefone" placeholder="(11) 99999-0000" />
+        </div>
+        <div class="form-group">
+          <label for="mensagem">Como podemos ajudar?</label>
+          <textarea id="mensagem" rows="4" placeholder="Descreva sua necessidade..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Enviar mensagem</button>
+        <p id="form-feedback" class="form-feedback"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="logo-img-footer"></div>
+      <p>&copy; 2026 Qualiorg Consultoria. Todos os direitos reservados.</p>
+      <p>fernando@qualiorg.com.br &nbsp;|&nbsp; (11) 99862-3467</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
