@@ -2,12 +2,40 @@ function toggleMenu() {
   document.querySelector('nav').classList.toggle('open');
 }
 
-function enviarFormulario(e) {
+async function enviarFormulario(e) {
   e.preventDefault();
+  const form = e.target;
   const feedback = document.getElementById('form-feedback');
-  feedback.textContent = '✓ Mensagem enviada! Fernando entrará em contato em breve.';
-  e.target.reset();
-  setTimeout(() => { feedback.textContent = ''; }, 6000);
+  const btn = form.querySelector('.btn-submit');
+
+  btn.textContent = 'Enviando...';
+  btn.disabled = true;
+  feedback.style.color = '';
+  feedback.textContent = '';
+
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      feedback.style.color = '#16a34a';
+      feedback.textContent = '✓ Mensagem enviada! Entraremos em contato em breve.';
+      form.reset();
+    } else {
+      feedback.style.color = '#dc2626';
+      feedback.textContent = 'Erro ao enviar. Tente novamente ou entre em contato por telefone.';
+    }
+  } catch {
+    feedback.style.color = '#dc2626';
+    feedback.textContent = 'Erro de conexão. Verifique sua internet e tente novamente.';
+  }
+
+  btn.textContent = 'Enviar mensagem';
+  btn.disabled = false;
+  setTimeout(() => { feedback.textContent = ''; }, 8000);
 }
 
 // Highlight nav link on scroll
