@@ -212,23 +212,23 @@
       <form class="contato-form" action="https://formspree.io/f/xeewegen" method="POST" onsubmit="enviarFormulario(event)">
         <div class="form-group">
           <label for="nome">Nome</label>
-          <input type="text" id="nome" placeholder="Seu nome completo" required />
+          <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required />
         </div>
         <div class="form-group">
           <label for="empresa">Empresa</label>
-          <input type="text" id="empresa" placeholder="Nome da sua empresa" />
+          <input type="text" id="empresa" name="empresa" placeholder="Nome da sua empresa" />
         </div>
         <div class="form-group">
           <label for="email">E-mail</label>
-          <input type="email" id="email" placeholder="seu@email.com" required />
+          <input type="email" id="email" name="email" placeholder="seu@email.com" required />
         </div>
         <div class="form-group">
           <label for="telefone">Telefone</label>
-          <input type="tel" id="telefone" placeholder="(11) 99999-0000" />
+          <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-0000" />
         </div>
         <div class="form-group">
           <label for="mensagem">Como podemos ajudar?</label>
-          <textarea id="mensagem" rows="4" placeholder="Descreva sua necessidade..." required></textarea>
+          <textarea id="mensagem" name="mensagem" rows="4" placeholder="Descreva sua necessidade..." required></textarea>
         </div>
         <button type="submit" class="btn-submit">Enviar mensagem</button>
         <p id="form-feedback" class="form-feedback"></p>
