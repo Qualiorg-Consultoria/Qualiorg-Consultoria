@@ -209,7 +209,7 @@
           <p>&#128100; Fernando Pimenta — Gestor da Qualidade</p>
         </div>
       </div>
-      <form class="contato-form" action="https://formspree.io/f/xeewegen" method="POST">
+      <form class="contato-form" action="https://api.web3forms.com/submit" method="POST">
         <div class="form-group">
           <label for="nome">Nome</label>
           <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required />
@@ -230,8 +230,9 @@
           <label for="mensagem">Como podemos ajudar?</label>
           <textarea id="mensagem" name="mensagem" rows="4" placeholder="Descreva sua necessidade..." required></textarea>
         </div>
-        <input type="hidden" name="_next" value="https://qualiorg-consultoria.github.io/Qualiorg-Consultoria/?enviado=1" />
-        <input type="hidden" name="_subject" value="Nova solicitação pelo site - Qualiorg" />
+        <input type="hidden" name="access_key" value="b4bec08f-4103-42a5-8a6a-27d4d73f5cdd" />
+        <input type="hidden" name="subject" value="Nova solicitação pelo site - Qualiorg" />
+        <input type="hidden" name="redirect" value="https://qualiorg-consultoria.github.io/Qualiorg-Consultoria/?enviado=1" />
         <button type="submit" class="btn-submit">Enviar mensagem</button>
       </form>
     </div>
