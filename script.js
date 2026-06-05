@@ -38,6 +38,16 @@ async function enviarFormulario(e) {
   setTimeout(() => { feedback.textContent = ''; }, 8000);
 }
 
+function trocarVideo(el) {
+  document.querySelectorAll('.video-thumb').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  const video = document.getElementById('main-video');
+  const label = document.getElementById('video-label');
+  video.src = el.dataset.src;
+  label.textContent = el.dataset.label;
+  video.play();
+}
+
 // Highlight nav link on scroll
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('nav a[href^="#"]');

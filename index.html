@@ -17,6 +17,7 @@
         <a href="#sobre">Sobre</a>
         <a href="#servicos">Serviços</a>
         <a href="#como">Como trabalhamos</a>
+        <a href="#videos">Treinamentos</a>
         <a href="#contato" class="btn-nav">Fale conosco</a>
       </nav>
       <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">&#9776;</button>
@@ -232,6 +233,67 @@
         <button type="submit" class="btn-submit">Enviar mensagem</button>
         <p id="form-feedback" class="form-feedback"></p>
       </form>
+    </div>
+  </section>
+
+  <!-- VÍDEOS -->
+  <section id="videos" class="section videos">
+    <div class="container">
+      <p class="eyebrow center">Conteúdo exclusivo</p>
+      <h2 class="center">Nossos treinamentos</h2>
+      <p class="section-sub center">Conheça os temas que abordamos nas nossas consultorias e treinamentos.</p>
+
+      <div class="video-player-wrap">
+        <video id="main-video" class="main-video" controls controlsList="nodownload">
+          <source src="videos/01-apresentacao.mp4" type="video/mp4">
+        </video>
+        <div class="video-title-bar">
+          <span id="video-label">1. Apresentação Qualiorg</span>
+        </div>
+      </div>
+
+      <div class="video-grid">
+        <div class="video-thumb active" onclick="trocarVideo(this)" data-src="videos/01-apresentacao.mp4" data-label="1. Apresentação Qualiorg">
+          <div class="thumb-icon">&#9654;</div>
+          <span>Apresentação Qualiorg</span>
+        </div>
+        <div class="video-thumb" onclick="trocarVideo(this)" data-src="videos/02-nrbs-qualidade.mp4" data-label="2. NRBs Qualidade">
+          <div class="thumb-icon">&#9654;</div>
+          <span>NRBs Qualidade</span>
+        </div>
+        <div class="video-thumb" onclick="trocarVideo(this)" data-src="videos/03-iso-9001.mp4" data-label="3. ISO 9001:2015">
+          <div class="thumb-icon">&#9654;</div>
+          <span>ISO 9001:2015</span>
+        </div>
+        <div class="video-thumb" onclick="trocarVideo(this)" data-src="videos/04-iec-60079-19-20.mp4" data-label="4. IEC 60079-19/20">
+          <div class="thumb-icon">&#9654;</div>
+          <span>IEC 60079-19/20</span>
+        </div>
+        <div class="video-thumb" onclick="trocarVideo(this)" data-src="videos/05-iec-60079-17.mp4" data-label="5. IEC 60079-17">
+          <div class="thumb-icon">&#9654;</div>
+          <span>IEC 60079-17</span>
+        </div>
+        <div class="video-thumb" onclick="trocarVideo(this)" data-src="videos/06-conceito-5s.mp4" data-label="6. Conceito 5S">
+          <div class="thumb-icon">&#9654;</div>
+          <span>Conceito 5S</span>
+        </div>
+        <div class="video-thumb" onclick="trocarVideo(this)" data-src="videos/07-nbr-iso-45001.mp4" data-label="7. NBR ISO 45001">
+          <div class="thumb-icon">&#9654;</div>
+          <span>NBR ISO 45001</span>
+        </div>
+        <div class="video-thumb" onclick="trocarVideo(this)" data-src="videos/08-auditores-internos.mp4" data-label="8. Auditores Internos">
+          <div class="thumb-icon">&#9654;</div>
+          <span>Auditores Internos</span>
+        </div>
+        <div class="video-thumb" onclick="trocarVideo(this)" data-src="videos/09-ferramentas-qualidade.mp4" data-label="9. Ferramentas da Qualidade">
+          <div class="thumb-icon">&#9654;</div>
+          <span>Ferramentas da Qualidade</span>
+        </div>
+        <div class="video-thumb" onclick="trocarVideo(this)" data-src="videos/10-iso-14001.mp4" data-label="10. ISO 14001">
+          <div class="thumb-icon">&#9654;</div>
+          <span>ISO 14001</span>
+        </div>
+      </div>
     </div>
   </section>
 
