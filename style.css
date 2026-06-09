@@ -336,6 +336,10 @@ h2 {
 .contato-text p { color: var(--gray-500); margin-bottom: 14px; }
 .contato-info { margin-top: 28px; display: flex; flex-direction: column; gap: 12px; }
 .contato-info p { color: var(--gray-700); font-weight: 500; margin: 0; font-size: 0.95rem; }
+.whatsapp-link { color: #25d366; font-weight: 600; text-decoration: none; }
+.whatsapp-link:hover { text-decoration: underline; }
+.whatsapp-link-footer { color: #25d366; text-decoration: none; }
+.whatsapp-link-footer:hover { text-decoration: underline; }
 
 .contato-form {
   background: var(--white);
