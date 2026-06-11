@@ -511,9 +511,9 @@ h2 {
   .cards-grid { grid-template-columns: 1fr; }
   .beneficios-grid { grid-template-columns: 1fr; }
   .stats-row { gap: 20px; flex-wrap: wrap; }
-  .clientes-grid { grid-template-columns: 1fr; gap: 24px; }
-  .cliente-item { height: 200px; padding: 32px 40px; }
-  .cliente-item img { max-height: 140px; }
+  .clientes-grid { grid-template-columns: 1fr; gap: 16px; }
+  .cliente-item { height: 180px; padding: 16px 24px; border-width: 0; box-shadow: 0 2px 12px rgba(3,17,31,0.10); }
+  .cliente-item img { max-height: 140px; width: 90%; opacity: 1; filter: grayscale(0%); }
 }
 
 /* CARROSSEL CLIENTES */
