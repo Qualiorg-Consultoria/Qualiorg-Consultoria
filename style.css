@@ -511,7 +511,9 @@ h2 {
   .cards-grid { grid-template-columns: 1fr; }
   .beneficios-grid { grid-template-columns: 1fr; }
   .stats-row { gap: 20px; flex-wrap: wrap; }
-  .clientes-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .clientes-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .cliente-item { height: 140px; padding: 20px 16px; }
+  .cliente-item img { max-height: 100px; }
 }
 
 /* CARROSSEL CLIENTES */
@@ -598,8 +600,8 @@ h2 {
 
 .clientes-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 28px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
   align-items: center;
   margin-top: 48px;
 }
@@ -607,27 +609,27 @@ h2 {
 .cliente-item {
   background: #fff;
   border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 24px 20px;
+  border-radius: 14px;
+  padding: 28px 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 130px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  height: 160px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
   transition: box-shadow 0.2s, transform 0.2s;
 }
 
 .cliente-item:hover {
-  box-shadow: 0 6px 20px rgba(3,17,31,0.12);
+  box-shadow: 0 8px 24px rgba(3,17,31,0.14);
   transform: translateY(-3px);
 }
 
 .cliente-item img {
-  max-width: 100%;
-  max-height: 90px;
+  width: 100%;
+  max-height: 110px;
   object-fit: contain;
   filter: grayscale(100%);
-  opacity: 0.75;
+  opacity: 0.8;
   transition: filter 0.2s, opacity 0.2s;
 }
 
