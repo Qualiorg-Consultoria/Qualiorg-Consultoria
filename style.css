@@ -516,10 +516,12 @@ h2 {
 
 /* CARROSSEL CLIENTES */
 .clientes-carousel-wrap {
-  background: var(--navy);
-  padding: 28px 0;
+  background: #f1f5f9;
+  padding: 36px 0;
   overflow: hidden;
   position: relative;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .clientes-carousel-wrap::before,
@@ -528,53 +530,63 @@ h2 {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 80px;
+  width: 100px;
   z-index: 2;
   pointer-events: none;
 }
 
 .clientes-carousel-wrap::before {
   left: 0;
-  background: linear-gradient(to right, var(--navy), transparent);
+  background: linear-gradient(to right, #f1f5f9, transparent);
 }
 
 .clientes-carousel-wrap::after {
   right: 0;
-  background: linear-gradient(to left, var(--navy), transparent);
+  background: linear-gradient(to left, #f1f5f9, transparent);
 }
 
 .carousel-track {
   display: flex;
-  gap: 24px;
+  gap: 28px;
   width: max-content;
-  animation: scrollLogos 35s linear infinite;
+  animation: scrollLogos 40s linear infinite;
 }
 
 .carousel-track:hover { animation-play-state: paused; }
 
 .carousel-item {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 10px;
-  padding: 16px 28px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100px;
-  min-width: 180px;
+  height: 110px;
+  min-width: 200px;
   flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.carousel-item:hover {
+  box-shadow: 0 6px 20px rgba(3,17,31,0.12);
+  transform: translateY(-2px);
 }
 
 .carousel-item img {
-  max-height: 68px;
-  max-width: 150px;
+  max-height: 72px;
+  max-width: 160px;
   object-fit: contain;
-  filter: brightness(0) invert(1);
-  opacity: 0.7;
-  transition: opacity 0.2s;
+  filter: grayscale(100%);
+  opacity: 0.75;
+  transition: filter 0.2s, opacity 0.2s;
 }
 
-.carousel-item:hover img { opacity: 1; }
+.carousel-item:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+}
 
 @keyframes scrollLogos {
   0%   { transform: translateX(0); }
