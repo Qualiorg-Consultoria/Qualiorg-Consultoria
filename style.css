@@ -511,8 +511,8 @@ h2 {
   .cards-grid { grid-template-columns: 1fr; }
   .beneficios-grid { grid-template-columns: 1fr; }
   .stats-row { gap: 20px; flex-wrap: wrap; }
-  .clientes-grid { grid-template-columns: repeat(2, 1fr); gap: 28px 20px; }
-  .cliente-item img { max-height: 160px; opacity: 1; }
+  .clientes-grid { grid-template-columns: 1fr; gap: 40px; }
+  .cliente-item img { width: 100%; }
 }
 
 /* CARROSSEL CLIENTES */
@@ -599,8 +599,8 @@ h2 {
 
 .clientes-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px 48px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px;
   align-items: center;
   margin-top: 48px;
 }
@@ -609,19 +609,15 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px;
 }
 
 .cliente-item img {
   width: 100%;
   height: auto;
-  max-height: 180px;
   object-fit: contain;
-  transition: transform 0.2s, opacity 0.2s;
-  opacity: 0.85;
+  transition: transform 0.2s;
 }
 
 .cliente-item:hover img {
-  transform: scale(1.05);
-  opacity: 1;
+  transform: scale(1.04);
 }
