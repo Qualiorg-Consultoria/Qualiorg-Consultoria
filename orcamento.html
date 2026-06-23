@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solicitar Orçamento — Qualiorg Consultoria</title>
+  <meta name="description" content="Solicite um orçamento para certificação ISO 9001, IEC 60079-19 e outras normas de qualidade. Resposta em até 1 dia útil." />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo-link"><img src="logo-dark.png" alt="Qualiorg Consultoria" class="logo-img" /></a>
+      <nav>
+        <a href="index.html#sobre">Sobre</a>
+        <a href="index.html#servicos">Serviços</a>
+        <a href="index.html#como">Como trabalhamos</a>
+        <a href="index.html#videos">Mídias</a>
+        <a href="index.html#clientes">Clientes</a>
+        <a href="orcamento.html" class="btn-nav">Solicitar orçamento</a>
+      </nav>
+      <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">&#9776;</button>
+    </div>
+  </header>
+
+  <!-- HERO ORÇAMENTO -->
+  <section class="hero" style="padding: 140px 0 60px;">
+    <div class="container hero-content">
+      <p class="eyebrow">Solicitação de orçamento</p>
+      <h1>Quanto custa <span>certificar</span> sua empresa?</h1>
+      <p class="subtitle">Conte um pouco sobre sua empresa e a norma de interesse. Retornamos com uma proposta personalizada em até 1 dia útil.</p>
+    </div>
+  </section>
+
+  <!-- FORMULÁRIO DE ORÇAMENTO -->
+  <section class="section contato" style="padding-top: 56px;">
+    <div class="container contato-grid">
+      <div class="contato-text">
+        <p class="eyebrow">Por que pedir um orçamento</p>
+        <h2>Uma proposta sob medida para sua empresa</h2>
+        <p>Cada certificação tem um caminho diferente dependendo do porte da empresa, da norma e da maturidade dos processos atuais. Por isso, preparamos propostas personalizadas — sem pacotes genéricos.</p>
+
+        <div class="contato-info">
+          <p>&#9989; Diagnóstico inicial sem custo</p>
+          <p>&#9989; Resposta em até 1 dia útil</p>
+          <p>&#9989; Atendimento direto com o Gestor da Qualidade</p>
+        </div>
+
+        <div class="contato-info" style="margin-top: 28px;">
+          <p>&#128231; fernando@qualiorg.com.br</p>
+          <p>&#128222; <a href="https://wa.me/5511998623467" target="_blank" class="whatsapp-link">(11) 99862-3467 — WhatsApp</a></p>
+        </div>
+      </div>
+
+      <form class="contato-form" action="https://api.web3forms.com/submit" method="POST" id="orcamento-form">
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required />
+        </div>
+        <div class="form-group">
+          <label for="empresa">Empresa</label>
+          <input type="text" id="empresa" name="empresa" placeholder="Nome da sua empresa" required />
+        </div>
+        <div class="form-group">
+          <label for="cargo">Cargo</label>
+          <input type="text" id="cargo" name="cargo" placeholder="Seu cargo na empresa" />
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="telefone">Telefone / WhatsApp</label>
+          <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-0000" required />
+        </div>
+        <div class="form-group">
+          <label for="norma">Norma de interesse</label>
+          <select id="norma" name="norma" required>
+            <option value="" disabled selected>Selecione a norma</option>
+            <option value="ABNT NBR ISO 9001">ABNT NBR ISO 9001 — Gestão da Qualidade</option>
+            <option value="ABNT NBR IEC 60079-19">ABNT NBR IEC 60079-19 — Reparo de Equip. Ex</option>
+            <option value="ABNT NBR ISO 14001">ABNT NBR ISO 14001 — Gestão Ambiental</option>
+            <option value="ABNT NBR ISO 45001">ABNT NBR ISO 45001 — Saúde e Segurança</option>
+            <option value="Outra / não sei ainda">Outra / ainda não sei</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="porte">Porte da empresa</label>
+          <select id="porte" name="porte" required>
+            <option value="" disabled selected>Selecione o porte</option>
+            <option value="Até 10 funcionários">Até 10 funcionários</option>
+            <option value="11 a 50 funcionários">11 a 50 funcionários</option>
+            <option value="51 a 200 funcionários">51 a 200 funcionários</option>
+            <option value="Mais de 200 funcionários">Mais de 200 funcionários</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="prazo">Prazo desejado para certificação</label>
+          <select id="prazo" name="prazo">
+            <option value="Sem urgência">Sem urgência</option>
+            <option value="Até 3 meses">Até 3 meses</option>
+            <option value="3 a 6 meses">3 a 6 meses</option>
+            <option value="Mais de 6 meses">Mais de 6 meses</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="mensagem">Conte mais sobre sua necessidade</label>
+          <textarea id="mensagem" name="mensagem" rows="4" placeholder="Ex: já temos algum sistema de gestão implantado? Já passou por auditoria antes?"></textarea>
+        </div>
+
+        <input type="hidden" name="access_key" value="b4bec08f-4103-42a5-8a6a-27d4d73f5cdd" />
+        <input type="hidden" name="subject" value="Nova solicitação de ORÇAMENTO - Qualiorg Consultoria" />
+        <input type="hidden" name="from_name" value="Site Qualiorg Consultoria - Página de Orçamento" />
+        <input type="hidden" name="redirect" value="https://qualiorg-consultoria.github.io/Qualiorg-Consultoria/orcamento.html?enviado=1" />
+
+        <button type="submit" class="btn-submit">Solicitar orçamento</button>
+        <p class="form-feedback" id="orcamento-feedback"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="logo-img-footer"></div>
+      <p>&copy; 2026 Qualiorg Consultoria. Todos os direitos reservados.</p>
+      <p>fernando@qualiorg.com.br &nbsp;|&nbsp; <a href="https://wa.me/5511998623467" target="_blank" class="whatsapp-link-footer">(11) 99862-3467</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('enviado') === '1') {
+        const fb = document.getElementById('orcamento-feedback');
+        if (fb) fb.textContent = 'Recebemos sua solicitação! Entraremos em contato em breve.';
+      }
+    })();
+  </script>
+</body>
+</html>
