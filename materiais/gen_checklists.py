@@ -5,6 +5,7 @@ from reportlab.lib.colors import HexColor
 from reportlab.platypus import (
     SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, HRFlowable
 )
+from reportlab.graphics.shapes import Drawing, Rect
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.enums import TA_LEFT, TA_CENTER
 
@@ -57,6 +58,13 @@ style_footer = ParagraphStyle(
 )
 
 
+def checkbox_drawing():
+    size = 11
+    d = Drawing(size, size)
+    d.add(Rect(0, 0, size, size, strokeColor=NAVY, strokeWidth=1.2, fillColor=None))
+    return d
+
+
 def checklist_table(items):
     rows = []
     for title, desc in items:
@@ -64,14 +72,13 @@ def checklist_table(items):
             Paragraph(title, style_item_title),
             Paragraph(desc, style_item_desc),
         ]
-        rows.append(["☐", cell])
+        rows.append([checkbox_drawing(), cell])
     t = Table(rows, colWidths=[10 * mm, 150 * mm])
     t.setStyle(TableStyle([
         ("VALIGN", (0, 0), (-1, -1), "TOP"),
-        ("FONTSIZE", (0, 0), (0, -1), 13),
-        ("TEXTCOLOR", (0, 0), (0, -1), NAVY),
+        ("TOPPADDING", (0, 0), (0, -1), 6),
         ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
-        ("TOPPADDING", (0, 0), (-1, -1), 4),
+        ("TOPPADDING", (1, 0), (1, -1), 4),
         ("LINEBELOW", (0, 0), (-1, -2), 0.4, GRAY_LIGHT),
     ]))
     return t
