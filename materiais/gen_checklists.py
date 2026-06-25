@@ -174,7 +174,7 @@ iec_items = [
 build(
     "checklist-iso9001.pdf",
     "AUTODIAGNÓSTICO GRATUITO",
-    "Está sua empresa pronta para a ISO 9001?",
+    "Sua empresa está pronta para a ISO 9001?",
     "Responda este checklist rápido e descubra o quão preparada sua empresa está para implementar ou manter "
     "a certificação ABNT NBR ISO 9001. Marque os itens que sua empresa já atende.",
     iso9001_items,
