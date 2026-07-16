@@ -378,7 +378,7 @@ h2 {
   transition: background 0.15s;
   cursor: default;
 }
-.card:hover { background: rgba(255,255,255,0.02); margin: 0 -48px; padding: 36px 48px; }
+.card:hover { background: rgba(255,255,255,0.02); }
 
 .card-icon {
   display: flex;
