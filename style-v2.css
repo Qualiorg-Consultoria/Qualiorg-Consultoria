@@ -48,7 +48,7 @@ body {
 .logo-link {
   display: block;
   text-decoration: none;
-  width: 175px;
+  width: 200px;
   height: 58px;
   overflow: hidden;
   position: relative;
@@ -61,7 +61,7 @@ body {
   height: 200px;
   top: 50%;
   left: 50%;
-  transform: translate(-47%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .footer-logo-wrap {
@@ -78,7 +78,7 @@ body {
   height: 200px;
   top: 50%;
   left: 50%;
-  transform: translate(-47%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 nav { display: flex; align-items: center; gap: 36px; }
@@ -144,7 +144,7 @@ nav a:hover, nav a.active { color: var(--white); }
   width: 700px;
   height: 700px;
   background: radial-gradient(ellipse, rgba(255,255,255,0.05) 0%, transparent 65%);
-  transform: translate(-47%, -50%);
+  transform: translate(-50%, -50%);
   pointer-events: none;
 }
 
