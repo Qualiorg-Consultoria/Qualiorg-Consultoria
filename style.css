@@ -335,10 +335,15 @@ h2 {
 .card:hover { background: rgba(255,255,255,0.02); }
 
 .card-icon {
-  font-size: 1.4rem;
-  margin-bottom: 0;
-  display: block;
-  opacity: 0.6;
+  display: flex;
+  align-items: center;
+  opacity: 0.55;
+}
+.card-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--white);
+  flex-shrink: 0;
 }
 .card h3 {
   font-size: 1.1rem;
