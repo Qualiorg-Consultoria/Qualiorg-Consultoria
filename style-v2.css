@@ -62,6 +62,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-47%, -50%);
+  mix-blend-mode: screen;
 }
 
 .logo-img-footer {
@@ -72,6 +73,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-47%, -50%);
+  mix-blend-mode: screen;
 }
 .footer-logo-wrap {
   position: relative;
