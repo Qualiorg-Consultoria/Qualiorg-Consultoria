@@ -34,9 +34,7 @@ body {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  background: rgba(3, 17, 31, 0.92);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: #03111F;
   border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
@@ -63,7 +61,7 @@ body {
   height: 200px;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-47%, -50%);
 }
 
 .logo-img-footer {
@@ -73,7 +71,7 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-47%, -50%);
 }
 .footer-logo-wrap {
   position: relative;
@@ -146,7 +144,7 @@ nav a:hover, nav a.active { color: var(--white); }
   width: 700px;
   height: 700px;
   background: radial-gradient(ellipse, rgba(255,255,255,0.05) 0%, transparent 65%);
-  transform: translate(-50%, -50%);
+  transform: translate(-47%, -50%);
   pointer-events: none;
 }
 
