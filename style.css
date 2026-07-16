@@ -50,17 +50,17 @@ body {
 .logo-link {
   display: block;
   text-decoration: none;
-  width: 240px;
-  height: 58px;
-  background: url('logo-dark.png') 0px -70px / 200px 200px no-repeat;
+  width: 220px;
+  height: 50px;
+  background: url('logo-dark.png') left center / 240px 240px no-repeat;
   flex-shrink: 0;
 }
 .logo-img { display: none; }
 
 .logo-img-footer {
-  width: 240px;
-  height: 58px;
-  background: url('logo-dark.png') 0px -70px / 200px 200px no-repeat;
+  width: 220px;
+  height: 50px;
+  background: url('logo-dark.png') center center / 240px 240px no-repeat;
   margin: 0 auto 24px;
 }
 
