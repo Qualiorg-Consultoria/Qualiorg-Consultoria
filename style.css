@@ -52,7 +52,7 @@ body {
   text-decoration: none;
   width: 220px;
   height: 50px;
-  background: url('logo-dark.png') left center / 240px 240px no-repeat;
+  background: url('logo-dark.png') center center / 240px 240px no-repeat;
   flex-shrink: 0;
 }
 .logo-img { display: none; }
