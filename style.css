@@ -48,25 +48,19 @@ body {
 }
 
 .logo-link {
-  display: flex;
-  align-items: center;
+  display: block;
   text-decoration: none;
+  width: 210px;
+  height: 52px;
+  background: url('logo-dark.png') 0px -61px / 175px 175px no-repeat;
   flex-shrink: 0;
 }
-.logo-img {
-  display: block;
-  width: 180px;
-  height: 44px;
-  object-fit: contain;
-  object-position: left center;
-}
+.logo-img { display: none; }
 
 .logo-img-footer {
-  display: block;
-  width: 160px;
-  height: 44px;
-  object-fit: contain;
-  object-position: center center;
+  width: 210px;
+  height: 60px;
+  background: url('logo-dark.png') 0px -65px / 200px 200px no-repeat;
   margin: 0 auto 24px;
 }
 
