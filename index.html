@@ -98,7 +98,11 @@
         <a href="#servicos" class="btn-secondary">Ver serviços</a>
       </div>
     </div>
-    <div class="hero-bg"></div>
+    <div class="hero-bg" id="hero-bg"></div>
+    <div class="hero-scroll-hint" id="scroll-hint">
+      <div class="scroll-line"></div>
+      <div class="scroll-dot"></div>
+    </div>
   </section>
 
   <!-- STATS STRIP -->
@@ -427,5 +431,35 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    (function () {
+      var navbar = document.querySelector('.navbar');
+      var hint   = document.getElementById('scroll-hint');
+      var heroBg = document.getElementById('hero-bg');
+      var hintHidden = false;
+
+      function onScroll() {
+        var y = window.scrollY;
+
+        // Princípio 12: glassmorphism após 10px de scroll
+        if (y > 10) navbar.classList.add('scrolled');
+        else         navbar.classList.remove('scrolled');
+
+        // Wayfinding: esconde hint no primeiro scroll
+        if (!hintHidden && y > 40) {
+          hint.classList.add('hidden');
+          hintHidden = true;
+        }
+
+        // Princípio 8: parallax sutil no brilho — move na direção do scroll
+        // Movimento de 0.15× o scroll, suave, sem distrair
+        if (heroBg) {
+          heroBg.style.transform = 'translate(-50%, calc(-50% + ' + (y * 0.15) + 'px))';
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+  </script>
 </body>
 </html>
