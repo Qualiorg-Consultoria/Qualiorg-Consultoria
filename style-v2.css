@@ -63,8 +63,7 @@ body {
   text-decoration: none;
   width: 220px;
   height: 58px;
-  /* CONSULTORIA removido do PNG — centraliza no novo bounding box (38-52% da imagem) */
-  background: url('logo-v2.png') center 43% / 200px 200px no-repeat;
+  background: url('logo-v2.png') center center / 200px 200px no-repeat;
   flex-shrink: 0;
 }
 .logo-img { display: none; }
