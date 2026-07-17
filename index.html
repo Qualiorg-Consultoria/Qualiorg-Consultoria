@@ -438,27 +438,48 @@
       var heroBg = document.getElementById('hero-bg');
       var hintHidden = false;
 
+      // [P14] Respeita prefers-reduced-motion para parallax
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
       function onScroll() {
         var y = window.scrollY;
 
-        // Princípio 12: glassmorphism após 10px de scroll
+        // [P12] Glassmorphism após 10px de scroll
         if (y > 10) navbar.classList.add('scrolled');
         else         navbar.classList.remove('scrolled');
 
-        // Wayfinding: esconde hint no primeiro scroll
+        // [P16] Wayfinding: esconde hint no primeiro scroll
         if (!hintHidden && y > 40) {
           hint.classList.add('hidden');
           hintHidden = true;
         }
 
-        // Princípio 8: parallax sutil no brilho — move na direção do scroll
-        // Movimento de 0.15× o scroll, suave, sem distrair
-        if (heroBg) {
+        // [P8] Parallax sutil — cancelado se reduced-motion ativo
+        if (heroBg && !reducedMotion) {
           heroBg.style.transform = 'translate(-50%, calc(-50% + ' + (y * 0.15) + 'px))';
         }
       }
 
       window.addEventListener('scroll', onScroll, { passive: true });
+
+      // [P16] Reveal de seções ao entrar no viewport
+      if (!reducedMotion) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              e.target.classList.add('visible');
+              observer.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.section, .stats-strip, .sobre-grid, .cards-grid')
+          .forEach(function (el) { observer.observe(el); });
+      } else {
+        // Reduced-motion: revela tudo imediatamente sem animação
+        document.querySelectorAll('.section, .stats-strip, .sobre-grid, .cards-grid')
+          .forEach(function (el) { el.classList.add('visible'); });
+      }
     })();
   </script>
 </body>

@@ -11,9 +11,22 @@
   --gray-600:   #4A5260;
   --gray-900:   #0D1117;
   --green:      #16a34a;
+
+  /* Escala tipográfica — 7 passos, substitui os 16 valores ad-hoc [P15] */
+  --text-xs:   0.72rem;    /* 11.5px — labels, eyebrows, meta */
+  --text-sm:   0.8125rem;  /* 13px   — legendas, thumbs, step p */
+  --text-base: 1rem;       /* 16px   — corpo */
+  --text-md:   1.0625rem;  /* 17px   — card h3, destaques */
+  --text-lg:   1.125rem;   /* 18px   — subtítulo hero */
+  --text-xl:   1.25rem;    /* 20px   — blockquote */
+  --text-2xl:  2.25rem;    /* 36px   — estatísticas */
+  --text-3xl:  2.75rem;    /* 44px   — step-num */
 }
 
-html { scroll-behavior: smooth; }
+/* [P14] Gated em no-preference — usuários com reduced-motion não recebem scroll animado */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
@@ -69,24 +82,32 @@ nav { display: flex; align-items: center; gap: 36px; }
 nav a {
   text-decoration: none;
   color: rgba(255,255,255,0.5);
-  font-size: 0.875rem;
+  font-size: var(--text-base);
   font-weight: 500;
   letter-spacing: 0.01em;
-  transition: color 0.15s;
+  transition: color 0.2s;
+  /* [P10] Hit target mínimo 44px — padding vertical compensa sem alterar layout */
+  padding: 12px 4px;
+  margin: -12px -4px;
 }
 nav a:hover, nav a.active { color: var(--white); }
 
-.btn-nav {
-  background: var(--white) !important;
-  color: var(--navy) !important;
-  padding: 8px 20px !important;
-  border-radius: 6px !important;
-  font-weight: 700 !important;
-  font-size: 0.82rem !important;
-  letter-spacing: 0.02em !important;
-  transition: opacity 0.15s !important;
+/* [P7] Sem !important — especificidade via seletor pai resolve a cascata */
+.nav-inner .btn-nav {
+  background: var(--white);
+  color: var(--navy);
+  padding: 10px 20px;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: var(--text-sm);
+  letter-spacing: 0.02em;
+  transition: opacity 0.2s, transform 0.2s;
 }
-.btn-nav:hover { opacity: 0.88 !important; }
+.nav-inner .btn-nav:hover  { opacity: 0.88; }
+.nav-inner .btn-nav:active { transform: scale(0.96); transition-duration: 0.08s; }
 
 .menu-toggle {
   display: none;
@@ -246,8 +267,9 @@ nav a:hover, nav a.active { color: var(--white); }
   letter-spacing: 0.02em;
   transition: opacity 0.2s, transform 0.2s cubic-bezier(0.34, 1.12, 0.64, 1);
 }
-.btn-primary:hover  { opacity: 0.93; transform: translateY(-1px); }
-.btn-primary:active { transform: scale(0.97); opacity: 0.88; transition-duration: 0.08s; }
+/* [P7/P9] Sem levitação no hover — botões pressionam, não flutuam */
+.btn-primary:hover  { opacity: 0.91; }
+.btn-primary:active { transform: scale(0.97); opacity: 0.85; transition-duration: 0.08s; }
 
 .btn-secondary {
   display: inline-flex;
@@ -310,7 +332,7 @@ nav a:hover, nav a.active { color: var(--white); }
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Princípio 14: reduced motion — substitui translate+spring por fade puro */
+/* [P14] Reduced motion — fade puro, sem translate, sem parallax, sem scale em imagens */
 @media (prefers-reduced-motion: reduce) {
   .hero .eyebrow,
   .hero h1,
@@ -321,6 +343,13 @@ nav a:hover, nav a.active { color: var(--white); }
   }
   .scroll-dot { animation: none; }
   .hero-bg { transition: none; }
+  .cliente-item img { transition: none; transform: none !important; }
+  /* Revela seções imediatamente sem animação */
+  .section, .stats-strip, .sobre-grid, .cards-grid {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 /* ─── FAIXA DE STATS (abaixo do hero) ─── */
@@ -347,15 +376,15 @@ nav a:hover, nav a.active { color: var(--white); }
 
 .strip-stat strong {
   display: block;
-  font-size: 3rem;
-  font-weight: 800;
+  font-size: var(--text-2xl);   /* unificado com .stat strong [P15] */
+  font-weight: 700;
   color: var(--navy);
-  letter-spacing: -0.06em;
+  letter-spacing: -0.05em;      /* um único valor para estatísticas */
   line-height: 1;
   margin-bottom: 8px;
 }
 .strip-stat span {
-  font-size: 0.78rem;
+  font-size: var(--text-xs);
   color: var(--gray-400);
   font-weight: 500;
   text-transform: uppercase;
@@ -365,10 +394,11 @@ nav a:hover, nav a.active { color: var(--white); }
 /* ─── SECTIONS ─── */
 .section { padding: 120px 0; }
 
+/* [P15] Peso unificado com hero h1 (700), tracking consistente para display */
 h2 {
   font-size: clamp(2rem, 4vw, 3.4rem);
-  font-weight: 800;
-  letter-spacing: -0.04em;
+  font-weight: 700;
+  letter-spacing: -0.03em;
   line-height: 1.05;
   margin-bottom: 16px;
 }
@@ -439,14 +469,14 @@ h2 {
 .stat:last-child { border-right: none; margin-right: 0; padding-right: 0; }
 .stat strong {
   display: block;
-  font-size: 2.4rem;
-  font-weight: 800;
+  font-size: var(--text-2xl);   /* mesmo valor de strip-stat [P15] */
+  font-weight: 700;
   color: var(--navy);
   letter-spacing: -0.05em;
   line-height: 1;
   margin-bottom: 6px;
 }
-.stat span { font-size: 0.75rem; color: var(--gray-400); font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
+.stat span { font-size: var(--text-xs); color: var(--gray-400); font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
 
 .sobre-visual { display: flex; justify-content: center; position: sticky; top: 84px; }
 
@@ -486,6 +516,7 @@ h2 {
   border-top: 1px solid rgba(255,255,255,0.06);
 }
 
+/* [P11] Sem transition em background — overlay com opacity roda no compositor */
 .card {
   display: grid;
   grid-template-columns: 48px 1fr 1fr;
@@ -493,10 +524,19 @@ h2 {
   align-items: start;
   padding: 36px 0;
   border-bottom: 1px solid rgba(255,255,255,0.06);
-  transition: background 0.15s;
   cursor: default;
+  position: relative;
 }
-.card:hover { background: rgba(255,255,255,0.02); }
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.025);
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.card:hover::after { opacity: 1; }
 
 .card-icon {
   display: flex;
@@ -512,15 +552,16 @@ h2 {
 }
 
 .card h3 {
-  font-size: 1.05rem;
+  font-size: var(--text-md);
   font-weight: 700;
   color: var(--white);
   letter-spacing: -0.02em;
   line-height: 1.35;
 }
-.card p { font-size: 0.875rem; color: rgba(255,255,255,0.4); line-height: 1.75; }
-.card a { color: rgba(255,255,255,0.3) !important; font-size: 0.82rem !important; text-decoration: none; }
-.card a:hover { color: rgba(255,255,255,0.7) !important; }
+.card p { font-size: var(--text-sm); color: rgba(255,255,255,0.4); line-height: 1.75; }
+/* [P7] Sem !important — especificidade via seletor pai */
+.cards-grid .card a { color: rgba(255,255,255,0.3); font-size: var(--text-sm); text-decoration: none; }
+.cards-grid .card a:hover { color: rgba(255,255,255,0.7); }
 
 /* ─── COMO TRABALHAMOS ─── */
 .como { background: var(--white); }
@@ -533,36 +574,44 @@ h2 {
   border: 1px solid var(--gray-200);
 }
 
+/* [P11] Overlay compositor-friendly em vez de background transition */
 .step {
   padding: 36px 28px;
   border-right: 1px solid var(--gray-200);
-  background: transparent;
   border-radius: 0;
   border-bottom: none;
   flex: none;
   min-width: auto;
   max-width: none;
   text-align: left;
-  transition: background 0.15s;
+  position: relative;
 }
-.step:hover { background: var(--off-white); }
+.step::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--off-white);
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.step:hover::after { opacity: 1; }
 .step:last-child { border-right: none; }
 
 .step-num {
   display: block;
-  font-size: 2.8rem;
-  font-weight: 800;
+  font-size: var(--text-3xl);  /* 44px, na escala */
+  font-weight: 700;
   color: var(--gray-200);
-  letter-spacing: -0.06em;
+  letter-spacing: -0.05em;
   line-height: 1;
   margin-bottom: 24px;
-  width: auto;
-  height: auto;
   background: none;
   border-radius: 0;
 }
-.step h3 { font-size: 0.875rem; font-weight: 700; margin-bottom: 8px; color: var(--gray-900); }
-.step p { font-size: 0.8rem; color: var(--gray-400); line-height: 1.6; }
+.step h3 { font-size: var(--text-sm); font-weight: 700; margin-bottom: 8px; color: var(--gray-900); }
+/* [P15] Mínimo legível: era 0.8rem (12.8px), agora 0.8125rem (13px) */
+.step p { font-size: var(--text-sm); color: var(--gray-400); line-height: 1.6; }
 
 .step-arrow { display: none; }
 
@@ -576,19 +625,28 @@ h2 {
   border: 1px solid var(--gray-200);
 }
 
+/* [P11] Overlay compositor-friendly */
 .beneficio {
   flex-direction: column;
   gap: 12px;
   padding: 36px 32px;
   border-right: 1px solid var(--gray-200);
   border-radius: 0;
-  background: transparent;
   border-bottom: none;
   border-top: none;
   border-left: none;
-  transition: background 0.15s;
+  position: relative;
 }
-.beneficio:hover { background: var(--off-white); }
+.beneficio::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--off-white);
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.beneficio:hover::after { opacity: 1; }
 .beneficio:last-child { border-right: none; }
 
 .beneficio span {
@@ -609,13 +667,18 @@ h2 {
 /* ─── CONTATO ─── */
 .contato { background: var(--off-white); }
 
+/* [P12] Profundidade material — elevação no card inteiro + borda-gradiente no divisor */
 .contato-grid {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
   gap: 0;
   align-items: stretch;
-  border: 1px solid var(--gray-200);
+  border: none;
   background: var(--white);
+  box-shadow:
+    0 0 0 1px var(--gray-200),
+    0 8px 32px rgba(0,0,0,0.06),
+    0 2px 8px rgba(0,0,0,0.04);
 }
 
 .contato-text {
@@ -623,6 +686,19 @@ h2 {
   background: var(--navy-deep);
   color: var(--white);
   border-right: none;
+  position: relative;
+}
+/* Borda-gradiente entre os dois painéis — mais refinada que borda sólida [P12] */
+.contato-text::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom,
+    rgba(255,255,255,0.14),
+    rgba(255,255,255,0.04),
+    rgba(255,255,255,0.14)
+  );
 }
 .contato-text .eyebrow { color: rgba(255,255,255,0.25); }
 .contato-text h2 { color: var(--white); margin-bottom: 16px; }
@@ -685,6 +761,7 @@ h2 {
 .form-group textarea:focus { border-color: var(--navy); }
 .form-group textarea { resize: vertical; }
 
+/* [P1] :active responde no pointer-down — sem isso o clique parece morto */
 .btn-submit {
   width: 100%;
   padding: 16px;
@@ -692,16 +769,17 @@ h2 {
   color: var(--white);
   border: none;
   cursor: pointer;
-  font-size: 0.82rem;
+  font-size: var(--text-sm);
   border-radius: 6px;
   font-weight: 700;
   font-family: inherit;
-  transition: opacity 0.15s;
+  transition: opacity 0.2s, transform 0.2s;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-top: 8px;
 }
-.btn-submit:hover { opacity: 0.85; }
+.btn-submit:hover  { opacity: 0.85; }
+.btn-submit:active { transform: scale(0.98); opacity: 0.78; transition-duration: 0.08s; }
 
 .form-feedback {
   margin-top: 12px;
@@ -738,6 +816,7 @@ h2 {
   gap: 0;
   border: 1px solid var(--gray-200);
 }
+/* [P11] Overlay em vez de background transition */
 .video-thumb {
   background: var(--white);
   border: none;
@@ -746,15 +825,28 @@ h2 {
   padding: 20px 12px;
   text-align: center;
   cursor: pointer;
-  transition: background 0.15s;
+  position: relative;
 }
+/* [P1] :active no video-thumb */
+.video-thumb:active { opacity: 0.75; transition: opacity 0.08s; }
+.video-thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--off-white);
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.video-thumb:hover::after { opacity: 1; }
+.video-thumb.active::after { opacity: 0; }
 .video-thumb:last-child { border-right: none; }
-.video-thumb:hover { background: var(--off-white); }
 .video-thumb.active { background: var(--navy); }
 
 .thumb-icon { font-size: 1rem; margin-bottom: 8px; color: var(--gray-400); display: block; }
 .video-thumb.active .thumb-icon { color: rgba(255,255,255,0.5); }
-.video-thumb span { font-size: 0.72rem; font-weight: 500; line-height: 1.35; display: block; color: var(--gray-600); }
+/* [P15] Mínimo legível — era 0.72rem (11.5px) */
+.video-thumb span { font-size: var(--text-sm); font-weight: 500; line-height: 1.35; display: block; color: var(--gray-600); }
 .video-thumb.active span { color: rgba(255,255,255,0.8); font-weight: 600; }
 
 @media (max-width: 900px) {
@@ -797,6 +889,26 @@ h2 {
 /* ─── STATS-STRIP (seção sobre herdada — ocultar stats-row duplicado) ─── */
 .sobre .stats-row { display: flex; }
 
+/* ─── REVEAL DE SEÇÕES [P16 — Craft] ─── */
+/* Estado inicial: elementos aguardam IntersectionObserver para entrar */
+.section,
+.stats-strip,
+.sobre-grid,
+.cards-grid {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.55s cubic-bezier(0.34, 1.12, 0.64, 1),
+    transform 0.55s cubic-bezier(0.34, 1.12, 0.64, 1);
+}
+.section.visible,
+.stats-strip.visible,
+.sobre-grid.visible,
+.cards-grid.visible {
+  opacity: 1;
+  transform: none;
+}
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 1024px) {
   .container { padding: 0 32px; }
@@ -831,7 +943,10 @@ h2 {
   .hero-content { padding: 120px 0 80px; }
   .section { padding: 80px 0; }
   .sobre-grid { grid-template-columns: 1fr; gap: 56px; }
-  .sobre-visual { display: none; }
+  /* [P16] Founder card não some — reformata inline em vez de desaparecer */
+  .sobre-visual { display: block; position: static; }
+  .visual-card { padding: 32px 24px; }
+  .visual-card blockquote { font-size: 1rem; }
   .steps { grid-template-columns: 1fr 1fr; }
   .beneficios-grid { grid-template-columns: 1fr; }
   .beneficio { border-right: none; }
