@@ -72,6 +72,53 @@
 </head>
 <body>
 
+  <!-- SPLASH DE LOGO ANIMADA — cobre tela inteira, toca com som ao clicar -->
+  <div id="splash" style="
+    position:fixed; inset:0; z-index:9999;
+    background:#03111F;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    cursor:pointer;
+    transition: opacity 0.7s ease;
+  ">
+    <video id="splash-video" playsinline preload="auto" style="
+      width:min(560px,90vw); height:auto; display:block;
+    ">
+      <source src="logo-animation.mp4" type="video/mp4" />
+    </video>
+    <div id="splash-btn" style="
+      margin-top:32px;
+      color:rgba(255,255,255,0.7);
+      font-family:system-ui,sans-serif;
+      font-size:0.9rem;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      display:flex; align-items:center; gap:10px;
+      animation: splash-pulse 2s ease-in-out infinite;
+    ">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      Toque para assistir com som
+    </div>
+    <div id="splash-skip" style="
+      position:absolute; bottom:32px; right:32px;
+      color:rgba(255,255,255,0.35);
+      font-family:system-ui,sans-serif;
+      font-size:0.78rem;
+      letter-spacing:0.1em;
+      text-transform:uppercase;
+      padding:8px 14px;
+      border:1px solid rgba(255,255,255,0.15);
+      border-radius:4px;
+      cursor:pointer;
+    ">Pular</div>
+  </div>
+  <style>
+    @keyframes splash-pulse {
+      0%,100% { opacity:0.5; }
+      50%      { opacity:1; }
+    }
+  </style>
+
   <!-- NAVBAR -->
   <header class="navbar">
     <div class="container nav-inner">
@@ -90,13 +137,6 @@
 
   <!-- HERO -->
   <section class="hero">
-    <!-- Logo animada: toca uma vez ao abrir, depois fade out -->
-    <div class="hero-logo-video" id="hero-logo-video">
-      <video id="logo-video" autoplay muted playsinline preload="auto">
-        <source src="logo-animation.mp4" type="video/mp4" />
-      </video>
-    </div>
-
     <div class="container hero-content" id="hero-content">
       <h1>Transformamos <span>processos</span> em excelência</h1>
       <p class="subtitle">Há mais de 10 anos ajudamos empresas a implementar normas de qualidade, padronizar processos e conquistar certificações reconhecidas internacionalmente.</p>
@@ -439,32 +479,53 @@
 
   <script src="script.js"></script>
   <script>
-    /* Logo animada: toca uma vez, depois revela hero-content */
+    /* Splash fullscreen com vídeo e som */
     (function () {
-      var videoWrap   = document.getElementById('hero-logo-video');
+      var splash      = document.getElementById('splash');
+      var video       = document.getElementById('splash-video');
+      var btn         = document.getElementById('splash-btn');
+      var skipBtn     = document.getElementById('splash-skip');
       var heroContent = document.getElementById('hero-content');
-      var video       = document.getElementById('logo-video');
-      var reducedMot  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var started     = false;
 
-      function revealHero() {
-        if (videoWrap) videoWrap.classList.add('done');
+      function closeSplash() {
+        splash.style.opacity = '0';
+        setTimeout(function () { splash.style.display = 'none'; }, 700);
         if (heroContent) heroContent.classList.add('visible');
       }
 
-      if (reducedMot || !video) {
-        revealHero();
-      } else {
-        // Garante que o vídeo toca (alguns navegadores bloqueiam autoplay)
-        var played = false;
-        video.addEventListener('ended', function () {
-          if (!played) { played = true; revealHero(); }
+      function startVideo() {
+        if (started) return;
+        started = true;
+        if (btn) btn.style.display = 'none';
+        video.muted = false;
+        video.play().catch(function () {
+          video.muted = true;
+          video.play();
         });
-        // Fallback: se o vídeo não carregar em 5s, revela mesmo assim
-        setTimeout(function () {
-          if (!played) { played = true; revealHero(); }
-        }, 5000);
-        video.play().catch(revealHero);
+        video.addEventListener('ended', closeSplash);
+        /* Fallback: se o vídeo travar, fecha após 15s */
+        setTimeout(function () { if (splash.style.display !== 'none') closeSplash(); }, 15000);
       }
+
+      /* Primeiro clique em qualquer lugar do splash inicia com som */
+      splash.addEventListener('click', function (e) {
+        if (e.target === skipBtn) return;
+        startVideo();
+      });
+
+      skipBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        closeSplash();
+      });
+
+      /* Tenta autoplay silencioso; se funcionar, apenas mostra o vídeo */
+      video.muted = true;
+      video.play().then(function () {
+        /* Autoplay silencioso funcionou: mostra o vídeo mas pausa até o clique */
+        video.pause();
+        video.currentTime = 0;
+      }).catch(function () { /* sem autoplay — splash aguarda clique */ });
     })();
   </script>
   <script>

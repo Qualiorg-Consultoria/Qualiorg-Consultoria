@@ -175,35 +175,13 @@ nav a:hover, nav a.active { color: var(--white); }
   will-change: transform;
 }
 
-/* Logo animada no hero — overlay central que toca uma vez */
-.hero-logo-video {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  pointer-events: none;
-  opacity: 1;
-  transition: opacity 0.8s ease;
-}
-.hero-logo-video.done {
-  opacity: 0;
-  pointer-events: none;
-}
-.hero-logo-video video {
-  width: min(420px, 80vw);
-  height: auto;
-  display: block;
-}
-
 .hero-content {
   position: relative;
   padding: 140px 0 120px;
   max-width: 860px;
   z-index: 3;
   opacity: 0;
-  transition: opacity 0.8s ease 0.3s;
+  transition: opacity 0.8s ease 0.2s;
 }
 .hero-content.visible {
   opacity: 1;
