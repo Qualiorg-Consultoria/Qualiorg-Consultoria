@@ -90,7 +90,14 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="container hero-content">
+    <!-- Logo animada: toca uma vez ao abrir, depois fade out -->
+    <div class="hero-logo-video" id="hero-logo-video">
+      <video id="logo-video" autoplay muted playsinline preload="auto">
+        <source src="logo-animation.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <div class="container hero-content" id="hero-content">
       <h1>Transformamos <span>processos</span> em excelência</h1>
       <p class="subtitle">Há mais de 10 anos ajudamos empresas a implementar normas de qualidade, padronizar processos e conquistar certificações reconhecidas internacionalmente.</p>
       <div class="hero-actions">
@@ -431,6 +438,35 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    /* Logo animada: toca uma vez, depois revela hero-content */
+    (function () {
+      var videoWrap   = document.getElementById('hero-logo-video');
+      var heroContent = document.getElementById('hero-content');
+      var video       = document.getElementById('logo-video');
+      var reducedMot  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function revealHero() {
+        if (videoWrap) videoWrap.classList.add('done');
+        if (heroContent) heroContent.classList.add('visible');
+      }
+
+      if (reducedMot || !video) {
+        revealHero();
+      } else {
+        // Garante que o vídeo toca (alguns navegadores bloqueiam autoplay)
+        var played = false;
+        video.addEventListener('ended', function () {
+          if (!played) { played = true; revealHero(); }
+        });
+        // Fallback: se o vídeo não carregar em 5s, revela mesmo assim
+        setTimeout(function () {
+          if (!played) { played = true; revealHero(); }
+        }, 5000);
+        video.play().catch(revealHero);
+      }
+    })();
+  </script>
   <script>
     (function () {
       var navbar = document.querySelector('.navbar');
